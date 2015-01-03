@@ -17,7 +17,7 @@ function setPlatform {
 
 if [ -f /etc/redhat-release ]
 then
-  ver=`cat /etc/redhat-release | awk '{printf("%2.2s\n", $3)}'`
+  ver=`cat /etc/redhat-release | awk '{printf("%0.2s\n", $(NF-1))}'`
   
   if  [ "$ver" = "5." ]
   then
@@ -26,7 +26,7 @@ then
   then
     setPlatform el6 centos6
   else
-    ver=`cat /etc/redhat-release | awk '{printf("%2.2s\n", $4)}'`
+    ver=`cat /etc/redhat-release | awk '{printf("%0.2s\n", $(NF-1))}'`
     
     if [ "$ver" = "6." ]
     then
